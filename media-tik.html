@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Pembelajaran TIK</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 text-center shadow">
+    <h1 class="text-2xl font-bold">Media Pembelajaran TIK</h1>
+  </header>
+
+  <!-- Login Form -->
+  <section class="max-w-md mx-auto mt-10 bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Login Siswa</h2>
+    <form id="loginForm">
+      <input type="text" placeholder="Username" class="w-full mb-3 p-2 border rounded" required>
+      <input type="password" placeholder="Password" class="w-full mb-3 p-2 border rounded" required>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Login</button>
+    </form>
+    <p class="mt-4 text-center">Belum punya akun? <a href="#" onclick="toggleRegister()" class="text-blue-600">Daftar di sini</a></p>
+  </section>
+
+  <!-- Register Form -->
+  <section id="registerForm" class="max-w-md mx-auto mt-6 bg-white p-6 rounded shadow hidden">
+    <h2 class="text-xl font-semibold mb-4">Daftar Akun Siswa</h2>
+    <form>
+      <input type="text" placeholder="Nama Lengkap" class="w-full mb-3 p-2 border rounded" required>
+      <input type="text" placeholder="Username" class="w-full mb-3 p-2 border rounded" required>
+      <input type="password" placeholder="Password" class="w-full mb-3 p-2 border rounded" required>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded w-full">Daftar</button>
+    </form>
+  </section>
+
+  <!-- Beranda -->
+  <section id="beranda" class="hidden max-w-4xl mx-auto mt-10 p-6 bg-white rounded shadow">
+    <nav class="flex space-x-4 border-b pb-4 mb-4">
+      <button onclick="showSection('petunjuk')" class="text-blue-700">Petunjuk</button>
+      <button onclick="showSection('kompetensi')">Kompetensi Dasar</button>
+      <button onclick="showSection('materi')">Materi</button>
+      <button onclick="showSection('latihan')">Latihan Soal</button>
+      <button onclick="showSection('kuis')">Kuis</button>
+    </nav>
+    <div id="petunjuk" class="content-section">
+      <h3 class="text-lg font-bold mb-2">Petunjuk Penggunaan</h3>
+      <p>Gunakan menu di atas untuk mengakses materi, latihan, dan kuis. Pelajari setiap bagian dengan seksama.</p>
+    </div>
+    <div id="kompetensi" class="content-section hidden">
+      <h3 class="text-lg font-bold mb-2">Kompetensi Dasar</h3>
+      <ul class="list-disc pl-5">
+        <li>Memahami dasar-dasar TIK</li>
+        <li>Menggunakan perangkat lunak pengolah kata</li>
+        <li>Mengenal internet dan keamanannya</li>
+      </ul>
+    </div>
+    <div id="materi" class="content-section hidden">
+      <h3 class="text-lg font-bold mb-2">Materi Pembelajaran</h3>
+      <p>Materi lengkap akan ditampilkan di sini, termasuk modul dan video pembelajaran.</p>
+    </div>
+    <div id="latihan" class="content-section hidden">
+      <h3 class="text-lg font-bold mb-2">Latihan Soal</h3>
+      <p>Latihan soal interaktif tersedia untuk menguji pemahaman materi.</p>
+    </div>
+    <div id="kuis" class="content-section hidden">
+      <h3 class="text-lg font-bold mb-2">Kuis</h3>
+      <p>Kerjakan kuis ini untuk evaluasi hasil belajar.</p>
+    </div>
+  </section>
+
+  <script>
+    function toggleRegister() {
+      document.getElementById('registerForm').classList.toggle('hidden');
+    }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.content-section').forEach(el => el.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.querySelector('section').classList.add('hidden');
+      document.getElementById('beranda').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
